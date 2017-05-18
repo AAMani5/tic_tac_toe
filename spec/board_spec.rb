@@ -1,9 +1,11 @@
 require 'board'
 
 describe Board do
+  let(:board) {Board.new}
+  let(:table) {[:zero, :one, :two, :three, :four, :five, :six, :seven, :eight]}
 
-  it "#new" do
-    expect{Board.new}.to_not raise_error
+  it "#get_table" do
+    expect(board.get_table).to eql table
   end
 
 end
