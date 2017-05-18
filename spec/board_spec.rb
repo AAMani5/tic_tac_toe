@@ -15,11 +15,11 @@ describe Board do
 
     it "raise exception if field already claimed" do
       board.claim_field(:two, :x)
-      expect{board.claim_field(:two, :x)}.to raise_error "occupied"
+      expect{board.claim_field(:two, :x)}.to raise_error Errors::Occupied
     end
 
     it "raise exception if field position out of bound" do
-      expect{board.claim_field(:nine, :x)}.to raise_error "outofbound"
+      expect{board.claim_field(:nine, :x)}.to raise_error Errors::OutOfBound
     end
 
   end

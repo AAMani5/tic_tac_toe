@@ -1,4 +1,7 @@
+require_relative 'errors'
+
 class Board
+  include Errors
   attr_reader :get_table
   TABLE = [:zero, :one, :two, :three, :four, :five, :six, :seven, :eight]
 
@@ -7,8 +10,8 @@ class Board
   end
 
   def claim_field(position, player_symbol)
-    fail "outofbound" if field_location_outofbound(position)
-    fail "occupied" if field_occupied(position)
+    fail Errors::OutOfBound if field_location_outofbound(position)
+    fail Errors::Occupied if field_occupied(position)
     @get_table = @get_table.map{|pos| pos == position ? player_symbol : pos}
   end
 
