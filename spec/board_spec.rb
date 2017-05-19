@@ -24,4 +24,17 @@ describe Board do
 
   end
 
+  context "#all_fields_claimed" do
+    it "indicates when a board is filled" do
+      play_tie_game
+      expect(board.all_fields_claimed?(:x, :o)).to be true
+    end
+
+    it "indicates when the board is not completely filled" do
+      play_partial_game
+      expect(board.all_fields_claimed?(:x, :o)).to be false
+    end
+
+  end
+
 end
