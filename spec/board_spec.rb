@@ -26,12 +26,12 @@ describe Board do
 
   context "#all_fields_claimed" do
     it "indicates when a board is filled" do
-      play_tie_game
+      board_fully_occupied
       expect(board.all_fields_claimed?(:x, :o)).to be true
     end
 
     it "indicates when the board is not completely filled" do
-      play_partial_game
+      board_partially_occupied
       expect(board.all_fields_claimed?(:x, :o)).to be false
     end
 
@@ -39,22 +39,22 @@ describe Board do
 
   context "#winning_fields_claimed" do
     it "indicates when game won - row claimed" do
-      play_row_claimed_game
+      row_claimed_board
       expect(board.winning_fields_claimed?(:x, :o)).to be true
     end
 
     it "indicates when game won - columns claimed" do
-      play_column_claimed_game
+      column_claimed_board
       expect(board.winning_fields_claimed?(:x, :o)).to be true
     end
 
     it "indicates when game won - diagonal row claimed" do
-      play_diagonal_claimed_game
+      diagonal_claimed_board
       expect(board.winning_fields_claimed?(:x, :o)).to be true
     end
 
     it "indicates when game is not won" do
-      play_partial_game
+      board_partially_occupied
       expect(board.winning_fields_claimed?(:x, :o)).to be false
     end
 

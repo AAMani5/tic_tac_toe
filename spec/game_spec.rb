@@ -27,21 +27,18 @@ describe Game do
 
   context "#over" do
     it "indicates if a game is over - won" do
-      play_row_claimed_game
       allow(board).to receive(:all_fields_claimed?).with(:x, :o).and_return(false)
       allow(board).to receive(:winning_fields_claimed?).with(:x, :o).and_return(true)
       expect(game.over?).to be true
     end
 
     it "indicates if a game is over - tie" do
-      play_tie_game
       allow(board).to receive(:all_fields_claimed?).with(:x, :o).and_return(true)
       allow(board).to receive(:winning_fields_claimed?).with(:x, :o).and_return(false)
       expect(game.over?).to be true
     end
 
     it "indicates if a game is not over" do
-      play_partial_game
       allow(board).to receive(:all_fields_claimed?).with(:x, :o).and_return(false)
       allow(board).to receive(:winning_fields_claimed?).with(:x, :o).and_return(false)
       expect(game.over?).to be false
