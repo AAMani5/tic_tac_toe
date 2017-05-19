@@ -21,6 +21,7 @@ class Game
   attr_reader :board, :current_player, :opponent_player, :players
 
   def pre_mark_checks_ok(position, player)
+    raise Errors::GameOver if self.over?
     raise Errors::NotPlayersTurn unless current_player == player
     raise Errors::Occupied unless board.field_not_occupied?(position)
   end
