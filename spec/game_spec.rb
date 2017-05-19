@@ -1,7 +1,7 @@
 require 'game'
 
 describe Game do
-  let(:board) {double :board, :field_not_occupied? => true, :claim_field => []}
+  let(:board) {double :board, :field_not_occupied? => true, :claim_field => [], :all_fields_claimed? => false, :winning_fields_claimed? => false}
   let(:player1) {double :player1, :symbol => :x}
   let(:player2) {double :player2, :symbol => :o}
   let(:game) {Game.new(board, player1, player2)}
