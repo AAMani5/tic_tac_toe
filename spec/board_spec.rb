@@ -60,4 +60,16 @@ describe Board do
 
   end
 
+  context "#field_not_occupied" do
+    it "indicates when a field is not marked" do
+      expect(board.field_not_occupied?(:one)).to be true
+    end
+
+    it "indicates when a field has already been marked" do
+      board.claim_field(:one, :x)
+      expect(board.field_not_occupied?(:one)).to be false
+    end
+
+  end
+
 end
