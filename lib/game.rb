@@ -13,6 +13,10 @@ class Game
     switch_players
   end
 
+  def over?
+    board.all_fields_claimed?(current_player.symbol, opponent_player.symbol) || board.winning_fields_claimed?(current_player.symbol, opponent_player.symbol)
+  end
+
   private
   attr_reader :board, :current_player, :opponent_player, :players
 
