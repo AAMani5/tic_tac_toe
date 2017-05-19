@@ -1,14 +1,14 @@
-module GameTypes
+module BoardStates
 
-  def play_tie_game
-    play_partial_game
+  def board_fully_occupied
+    board_partially_occupied
     board.claim_field(:six, :o)
     board.claim_field(:five, :x)
     board.claim_field(:eight, :o)
     board.claim_field(:seven, :x)
   end
 
-  def play_partial_game
+  def board_partially_occupied
     board.claim_field(:zero, :x)
     board.claim_field(:one, :o)
     board.claim_field(:two, :x)
@@ -16,7 +16,7 @@ module GameTypes
     board.claim_field(:four, :x)
   end
 
-  def play_row_claimed_game
+  def row_claimed_board
     board.claim_field(:zero, :x)
     board.claim_field(:three, :o)
     board.claim_field(:one, :x)
@@ -24,7 +24,7 @@ module GameTypes
     board.claim_field(:two, :x)
   end
 
-  def play_column_claimed_game
+  def column_claimed_board
     board.claim_field(:zero, :x)
     board.claim_field(:one, :o)
     board.claim_field(:three, :x)
@@ -32,7 +32,7 @@ module GameTypes
     board.claim_field(:six, :x)
   end
 
-  def play_diagonal_claimed_game
+  def diagonal_claimed_board
     board.claim_field(:zero, :x)
     board.claim_field(:one, :o)
     board.claim_field(:four, :x)

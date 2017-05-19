@@ -1,6 +1,6 @@
 require 'coveralls'
 require 'simplecov'
-require_relative 'helpers/gametypes'
+require_relative 'helpers/boardstates'
 
 SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,
