@@ -37,4 +37,27 @@ describe Board do
 
   end
 
+  context "#winning_fields_claimed" do
+    it "indicates when game won - row claimed" do
+      play_row_claimed_game
+      expect(board.winning_fields_claimed?(:x, :o)).to be true
+    end
+
+    it "indicates when game won - columns claimed" do
+      play_column_claimed_game
+      expect(board.winning_fields_claimed?(:x, :o)).to be true
+    end
+
+    it "indicates when game won - diagonal row claimed" do
+      play_diagonal_claimed_game
+      expect(board.winning_fields_claimed?(:x, :o)).to be true
+    end
+
+    it "indicates when game is not won" do
+      play_partial_game
+      expect(board.winning_fields_claimed?(:x, :o)).to be false
+    end
+
+  end
+
 end
