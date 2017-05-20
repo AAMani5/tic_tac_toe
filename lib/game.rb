@@ -1,5 +1,7 @@
 class Game
 
+  attr_reader :current_player
+
   def initialize(board, player1, player2)
     @board = board
     @players = [player1, player2]
@@ -17,8 +19,12 @@ class Game
     board.all_fields_claimed?(current_player.symbol, opponent_player.symbol) || board.winning_fields_claimed?(current_player.symbol, opponent_player.symbol)
   end
 
+  def get_table
+    board.get_table
+  end
+
   private
-  attr_reader :board, :current_player, :opponent_player, :players
+  attr_reader :board, :opponent_player, :players
 
   def pre_mark_checks_ok(position, player)
     raise Errors::GameOver if self.over?

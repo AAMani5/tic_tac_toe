@@ -6,6 +6,11 @@ describe Game do
   let(:player2) {double :player2, :symbol => :o}
   let(:game) {Game.new(board, player1, player2)}
 
+  it "#get_table" do
+    expect(board).to receive(:get_table)
+    game.get_table
+  end
+
   context "#make_mark" do
     it "lets the right player make a mark" do
       expect(board).to receive(:claim_field)
