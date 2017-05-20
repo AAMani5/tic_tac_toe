@@ -16,11 +16,11 @@ class Game
   end
 
   def over?
-     self.tie? || board.winning_fields_claimed?(current_player.symbol, opponent_player.symbol)
+     self.tie? || won?
   end
 
   def tie?
-    board.all_fields_claimed?(current_player.symbol, opponent_player.symbol)
+    board.all_fields_claimed?(current_player.symbol, opponent_player.symbol) && !won?
   end
 
   def get_table
@@ -29,6 +29,10 @@ class Game
 
   private
   attr_reader :board, :players
+
+  def won?
+    board.winning_fields_claimed?(current_player.symbol, opponent_player.symbol)
+  end
 
   def pre_mark_checks_ok(position, player)
     raise Errors::GameOver if self.over?
