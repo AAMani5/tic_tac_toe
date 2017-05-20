@@ -9,7 +9,7 @@ class Game
 
   def make_mark(position, player)
     pre_mark_checks_ok(position, player)
-    board.claim_field(position, player)
+    board.claim_field(position, player.symbol)
     switch_players
   end
 
