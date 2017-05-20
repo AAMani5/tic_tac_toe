@@ -1,6 +1,7 @@
 require 'coveralls'
 require 'simplecov'
 require_relative 'helpers/boardstates'
+require_relative 'helpers/gametypes'
 
 SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,
@@ -28,6 +29,7 @@ RSpec.configure do |config|
 
   # include helper methods in module
   config.include BoardStates
+  config.include GameTypes
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
