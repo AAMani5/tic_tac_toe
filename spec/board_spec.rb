@@ -72,4 +72,15 @@ describe Board do
 
   end
 
+  context "#field_location_outofbound" do
+    it "indicates if field not within the array index" do
+      expect(board.field_location_outofbound?(:ten)).to be true
+    end
+
+    it "indicates if a field is within the array index" do
+      expect(board.field_location_outofbound?(:one)).to be false
+    end
+
+  end
+
 end

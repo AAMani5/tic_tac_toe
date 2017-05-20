@@ -32,11 +32,11 @@ class Board
     get_table.include? position
   end
 
-  private
-
   def field_location_outofbound?(position)
     !(TABLE.include? position)
   end
+
+  private
 
   def rows_claimed?(player1_symbol, player2_symbol)
     row0claimed = check(get_row(0), player1_symbol, player2_symbol)
