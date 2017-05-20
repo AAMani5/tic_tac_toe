@@ -1,6 +1,6 @@
 class Game
 
-  attr_reader :current_player
+  attr_reader :current_player, :opponent_player
 
   def initialize(board, player1, player2)
     @board = board
@@ -16,7 +16,11 @@ class Game
   end
 
   def over?
-    board.all_fields_claimed?(current_player.symbol, opponent_player.symbol) || board.winning_fields_claimed?(current_player.symbol, opponent_player.symbol)
+     self.tie? || board.winning_fields_claimed?(current_player.symbol, opponent_player.symbol)
+  end
+
+  def tie?
+    board.all_fields_claimed?(current_player.symbol, opponent_player.symbol)
   end
 
   def get_table
@@ -24,11 +28,12 @@ class Game
   end
 
   private
-  attr_reader :board, :opponent_player, :players
+  attr_reader :board, :players
 
   def pre_mark_checks_ok(position, player)
     raise Errors::GameOver if self.over?
     raise Errors::NotPlayersTurn unless current_player == player
+    raise Errors::OutOfBound if board.field_location_outofbound?(position)
     raise Errors::Occupied unless board.field_not_occupied?(position)
   end
 

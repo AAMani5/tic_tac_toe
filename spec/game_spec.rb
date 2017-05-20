@@ -1,7 +1,7 @@
 require 'game'
 
 describe Game do
-  let(:board) {double :board, :field_not_occupied? => true, :claim_field => [], :all_fields_claimed? => false, :winning_fields_claimed? => false}
+  let(:board) {double :board, :field_location_outofbound? => false, :field_not_occupied? => true, :claim_field => [], :all_fields_claimed? => false, :winning_fields_claimed? => false}
   let(:player1) {double :player1, :symbol => :x}
   let(:player2) {double :player2, :symbol => :o}
   let(:game) {Game.new(board, player1, player2)}
@@ -47,6 +47,19 @@ describe Game do
       allow(board).to receive(:all_fields_claimed?).with(:x, :o).and_return(false)
       allow(board).to receive(:winning_fields_claimed?).with(:x, :o).and_return(false)
       expect(game.over?).to be false
+    end
+
+  end
+
+  context "#tie" do
+
+    it "indicates if game is tie" do
+      allow(board).to receive(:all_fields_claimed?).and_return(true)
+      expect(game.tie?).to be true
+    end
+
+    it "indicated if a game is not tie" do
+      expect(game.tie?).to be false
     end
 
   end
