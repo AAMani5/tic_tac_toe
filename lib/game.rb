@@ -35,10 +35,10 @@ class Game
   end
 
   def pre_mark_checks_ok(position, player)
-    raise Errors::GameOver if self.over?
-    raise Errors::NotPlayersTurn unless current_player == player
-    raise Errors::OutOfBound if board.field_location_outofbound?(position)
-    raise Errors::Occupied unless board.field_not_occupied?(position)
+    raise Errors::GameOver.new if self.over?
+    raise Errors::NotPlayersTurn.new unless current_player == player
+    raise Errors::OutOfBound.new if board.field_location_outofbound?(position)
+    raise Errors::Occupied.new unless board.field_not_occupied?(position)
   end
 
   def switch_players

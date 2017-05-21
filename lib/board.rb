@@ -15,8 +15,8 @@ class Board
   end
 
   def claim_field(position, player_symbol)
-    fail Errors::OutOfBound if field_location_outofbound?(position)
-    fail Errors::Occupied if !field_not_occupied?(position)
+    fail Errors::OutOfBound.new if field_location_outofbound?(position)
+    fail Errors::Occupied.new if !field_not_occupied?(position)
     @get_table = get_table.map{|pos| pos == position ? player_symbol : pos}
   end
 
