@@ -44,4 +44,9 @@ describe ConsolePrinter do
     expect { printer.announce_winner("x") }.to output("Winner is x\n").to_stdout
   end
 
+  it "clears the screen" do
+    expect(printer).to receive(:system).with("clear")
+    printer.clear_screen
+  end
+
 end
