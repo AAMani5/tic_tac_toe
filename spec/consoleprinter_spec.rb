@@ -20,4 +20,20 @@ describe ConsolePrinter do
     expect { printer.print_board(table) }.to output("zero\t|\tone\t|\ttwo\n").to_stdout
   end
 
+  it "asks player for symbol of his or her choice" do
+    expect{ printer.ask_player_symbol("player1") }.to output("What symbol would you like to choose, player1?\n").to_stdout
+  end
+
+  it "asks who wants to go first" do
+    expect{ printer.ask_who_goes_first("x", "o") }.to output("Who should go first?\n0. x\n1. o\n").to_stdout
+  end
+
+  it "prints current player's turn" do
+    expect { printer.display_turn("x") }.to output("x's turn\n").to_stdout
+  end
+
+  it "asks for position" do
+    expect { printer.ask_position }.to output("Please select a unclaimed field\n").to_stdout
+  end
+
 end
