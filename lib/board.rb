@@ -40,6 +40,11 @@ class Board
     get_table & TABLE
   end
 
+  def winning_fields_claimed_by(player1_symbol, player2_symbol)
+    winning_fields_claimed?(player1_symbol, player2_symbol)
+    @claimed_by
+  end
+
   private
 
   def rows_claimed?(player1_symbol, player2_symbol)
@@ -100,8 +105,10 @@ class Board
   end
 
   def check(set_of_fields, player1_symbol, player2_symbol)
-    set_of_fields.all? {|field| field == player1_symbol} ||
-    set_of_fields.all? {|field| field == player2_symbol}
+    claimed_by_1 = set_of_fields.all? {|field| field == player1_symbol}
+    claimed_by_2 = set_of_fields.all? {|field| field == player2_symbol}
+    @claimed_by ||= claimed_by_1 ? player1_symbol : claimed_by_2 ? player2_symbol : nil
+    claimed_by_1 || claimed_by_2
   end
 
 end

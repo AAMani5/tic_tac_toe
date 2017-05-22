@@ -91,4 +91,17 @@ describe Board do
 
   end
 
+  context "winning_fields_claimed_by" do
+    it "return symbol that claimed winning lines of field" do
+      row_claimed_board
+      expect(board.winning_fields_claimed_by(:x, :o)).to eql :x
+    end
+
+    it "returns nil when no winner" do
+      board_partially_occupied
+      expect(board.winning_fields_claimed_by(:x, :o)).to eql nil
+    end
+
+  end
+
 end
