@@ -83,4 +83,12 @@ describe Board do
 
   end
 
+  context "#available_fields" do
+    it "lists all unclaimed fields" do
+      board_partially_occupied
+      expect(board.available_fields).to eql [:five, :six, :seven, :eight]
+    end
+
+  end
+
 end

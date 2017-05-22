@@ -36,6 +36,10 @@ class Board
     !(TABLE.include? position)
   end
 
+  def available_fields
+    get_table & TABLE
+  end
+
   private
 
   def rows_claimed?(player1_symbol, player2_symbol)
