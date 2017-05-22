@@ -36,4 +36,12 @@ describe ConsolePrinter do
     expect { printer.ask_position }.to output("Please select a unclaimed field\n").to_stdout
   end
 
+  it "displays game over message" do
+    expect { printer.game_over_message }.to output("Game Over\n").to_stdout
+  end
+
+  it "displays winner if there is one" do
+    expect { printer.announce_winner("x") }.to output("Winner is x\n").to_stdout
+  end
+
 end
