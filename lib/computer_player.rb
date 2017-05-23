@@ -4,7 +4,7 @@ require_relative 'board'
 class ComputerPlayer
   include Player
 
-  def make_move(game, board, opponent_sym)
+  def make_move(board, opponent_sym)
     return :one if first_move?(board.get_table)
   end
 

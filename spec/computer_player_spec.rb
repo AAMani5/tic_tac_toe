@@ -16,12 +16,12 @@ describe ComputerPlayer do
   context "#make_move" do
 
     it "makes its first move" do
-      expect(computer_player.make_move(game, board, :o)).to eql :one
+      expect(computer_player.make_move(board, :o)).to eql :one
     end
 
     it "doesnot return a field without calculating the best move" do
       game.make_mark(:zero, human_player)
-      expect(computer_player.make_move(game, board, :o)).to eql nil
+      expect(computer_player.make_move(board, :o)).to eql nil
     end
 
   end
